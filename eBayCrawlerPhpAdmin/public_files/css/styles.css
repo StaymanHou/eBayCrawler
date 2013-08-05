@@ -1,0 +1,329 @@
+@charset "utf-8";
+/* CSS Document */
+
+# {
+margin:0;
+padding:0;
+}
+body {
+	margin:0;
+	padding:0;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+a {
+	color:#000;
+	text-decoration:none;
+	cursor:pointer;
+}
+img {
+	border-style:none;
+}
+ul, dl, dt, dd {
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+ol {
+	margin:0;
+	padding:0;
+}
+li {
+	margin:0;
+	padding:0;
+	color:333;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin:0;
+	padding:0;
+	font-size:14px;
+	font-family:"Lucida Grande";
+}
+p {
+	margin:0;
+	font-size:14px;
+	line-height:1.4em;
+	color:#000;
+}
+input, select {
+	margin:0;
+	padding:0;
+font-size:;
+}
+form {
+	margin:0;
+	padding:0;
+}
+.clear {
+	clear:both;
+	display:block;
+	visibility:hidden;
+	line-height:0;
+}
+/* general end*/
+
+body
+{
+    font-family: Arial, Sans, sans-serif;
+    text-align: center;
+}
+
+a
+{
+    color: #039;
+}
+
+table
+{
+    margin: 5px 0;
+}
+
+#header, #content, #footer
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; 
+    width: 960px;
+}
+
+#content
+{
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#footer
+{
+    font-size: 80%;
+    text-align: center;
+}
+
+#wrapper
+{
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+}
+
+#navigation
+{
+    overflow: auto;
+    border-bottom: 1px solid #000;
+    background-color:#EEEEEE;
+}
+
+#navigation div
+{
+    float: left;
+    margin: 0 45px;
+}
+
+div.curnavitem a, div.curnavitem a:visited, div.curnavitem a:hover, div.curnavitem a:active {
+    color: inherit;
+}
+
+#title
+{
+    background-color:#000000;
+}
+
+#title h1
+{
+    text-align: center;
+    color: white;
+}
+
+#content
+{
+    overflow: auto;
+}
+
+#content h2
+{
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+div.rssarticle
+{
+    cursor: pointer;
+}
+
+#RP_Main table tbody tr td,#QP_Main table tbody tr td
+{
+    border-width: 0px 1px 1px 0px;
+    border-style: solid;
+    border-color: rgb(240, 236, 235) rgb(243, 242, 242);
+}
+
+#RP_Main table thead tr td,#QP_Main table thead tr td
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(230, 224, 223) rgb(230, 224, 223) rgb(230, 224, 223) rgb(255, 255, 255);
+}
+
+#RP_Main table thead,#QP_Main table thead
+{
+    background-color: #ADD6FF;
+    font-size: 20px;
+    text-align: center;
+}
+
+#header-fixed {
+    position: fixed;
+    top: 0px; display:none;
+}
+
+#header-fixed thead tr td
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(230, 224, 223) rgb(230, 224, 223) rgb(230, 224, 223) rgb(255, 255, 255);
+}
+
+#header-fixed thead
+{
+    background-color: #ADD6FF;
+    font-size: 20px;
+    text-align: center;
+}
+
+#header-fixed
+{
+    border-collapse: separate;
+    border-spacing: 0px;
+    margin: 0;
+}
+
+div.rssarticle
+{
+    padding: 5px;
+}
+
+div.queuebar
+{
+    height: 16px;
+    background-color: #4D94FF;
+}
+
+tr.odd
+{
+    background-color: #CCFFB2;
+}
+
+tr.even
+{
+    background-color: #ECFFE3;
+}
+
+div.rsscontent
+{
+    width: 580px;
+    overflow: hidden;
+}
+
+#RP_Widget, #QP_Widget
+{
+    position: fixed;
+    left: 5px;
+    top: 70px;
+}
+
+#RP_Main table, #QP_Main table
+{
+    border-collapse: separate;
+    border-spacing: 0px;
+}
+
+#RP_Status
+{
+    position: fixed;
+    left: 0;
+    top: 400px;
+    border-style: groove;
+    border-width: 10px;
+    border-color: #33CCFF;
+    background-color: #E0FFC2;
+    max-width: 175px;
+    max-height: 175px;
+    overflow: hidden;
+}
+
+div.queuearticle[status="pending"]
+{
+    background-image: url('../media/pending.png');
+    background-size: 64px 64px;
+}
+
+div.queuearticle[status="posted"]
+{
+    background-image: url('../media/posted.png');
+    background-size: 64px 64px;
+    opacity: 0.5;
+}
+
+div.queuearticle[status="postfail"]
+{
+    background-image: url('../media/postfail.png');
+    background-size: 64px 64px;
+    opacity: 0.75;
+}
+
+/* abutton below */
+
+a.abutton{
+background: transparent url('../media/square-gray-left.gif') no-repeat top left;
+display: block;
+float: left;
+font: normal 12px Arial; /* Change 12px as desired */
+line-height: 15px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 23px) */
+height: 23px; /* Height of button background height */
+padding-left: 9px; /* Width of left menu image */
+text-decoration: none;
+}
+
+a:link.abutton, a:visited.abutton, a:active.abutton{
+color: #494949; /*button text color*/
+}
+
+a.abutton span{
+background: transparent url('../media/square-gray-right.gif') no-repeat top right;
+display: block;
+padding: 4px 9px 4px 0; /*Set 9px below to match value of 'padding-left' value above*/
+}
+
+a.abutton:hover{ /* Hover state CSS */
+background-position: bottom left;
+}
+
+a.abutton:hover span{ /* Hover state CSS */
+background-position: bottom right;
+color: black;
+}
+
+#sellerinfotable tbody tr.seller:hover{
+cursor: pointer;
+}
+
+.abuttonwrapper{ /* Container you can use to surround a CSS button to clear float */
+overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
+width: 100%;
+}
+
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+ 
+line {
+    stroke: black;
+}
+ 
+text {
+    font-family: Arial;
+    font-size: 9pt;
+}
