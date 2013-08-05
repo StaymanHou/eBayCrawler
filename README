@@ -1,0 +1,101 @@
+eBayCrawler is an FreeOSD Licensed eBay crawler script, written in Python, for human beings.
+
+eBayCrawler allows you to collect sellers' data from eBay (including username, score, average price of the goods in his front page, goods category, and the number of goods he sell in each category). It's powered by requests, lxml and MySQLdb.
+
+[BUG REPORT]
+    hhyycc0418@gmail.com
+
+[FEATURES]
+
+    Crawling the search result based on keyword
+    Providing the data access and control interface in MySQL
+    Control of crawling speed
+    Data cache and size control
+
+[INSTALLATION]
+
+    To install eBayCrawler:
+
+    1) You need python2.7 installed:
+        You can follow the link below to get guided to install python2.7:
+        http://www.python.org/getit/
+    
+    2) You need MySQL installed:
+        To simply install MySQL and manage the Database, LAMP and phpmyadmin is recommanded for new users. You can follow the link below to get guided to build up the envirounment:
+        a) Windows: http://www.apachefriends.org/en/xampp-windows.html
+        b) Mac: http://www.apachefriends.org/en/xampp-macosx.html
+        c) Linux(Ubuntu): http://www.unixmen.com/howto-install-amp-and-phpmyadmin-on-ubuntu
+
+    3) You need several modules built in python:
+        a) MySQLdb
+        b) requests
+        c) lxml
+        You can follow the link below to get guided to install modules in python:
+        http://docs.python.org/2/install/
+        
+    To setup eBayCrawler:
+    
+    1) Setup the table in your database:
+        In your database, execute the "createtable.sql" file or the code inside. The file is located in "MySQL" folder.
+    
+    2) Setup the database access info for the program:
+        Open "Mydb.py" in "Lib" folder. Change the value for the first four lines, where:
+            Mydb_host indicates the host of your database host. Probably you will set it to "localhost" or "127.0.0.1" which is your own computer.
+            Mydb_username indicates the username of your database. The program will use this username to access your database.
+            Mydb_password indicates the password for the username you specified. The program will use this password to access your database.
+            Mydb_db indicates the name of the database you want to use. It should have certain privileges for the user you specified.
+
+    3) Config your mainconf table in your database:
+        PAGE_LOAD_INTERVAL represents the seconds to wait after visiting every page.
+        CACHE_SIZE represents the number of seller datas are cached in memory. Once the number exceed the size, the data will be stored from memory to database.
+        ITEM_LIMIT represents the limit number of crawling items for each keywords. For example, if you set the ITEM_LIMIT to 1000 and the program have just scaned 1000 items for a keyword, the program will move to next keyword.
+        FLAG_PAUSE: if set true or 1, the program will pause, if set false or 0, the program will continue working.
+        
+    4) write down Keywordlist:
+        Open "keyword_list.txt". First two lines are example for you. Here, write down the keywords from where you want to collect data. One keyword per line. Each time the program start a task for a new keyword, it will read the first line of this file. Each time the program finish a task, it will delete the first line of this file. Therefore, if you want to add a butch of new keyword to the list while the program is running, you probably want to add them to the end of the list and don't want to change the first line of this file
+        
+    5) Setup the Web App:
+        Copy the "eBayCrawlerPhpAdmin" folder into you apache htdocs folder. 
+        Open "eBayCrawlerPhpAdmin/Lib/db.php". You may find follow stuff:
+            define('DB_HOST', '127.0.0.1');
+            define('DB_USER', 'MyUser');
+            define('DB_PASSWORD', 'ZwV2pZJrVWNG5t3W');
+            define('DB_SCHEMA', 'MyUser_eBaySellerData');
+        Change the values so that the Web App can access your MySQL database.
+        Now, you can access the Web App via your browser. The address is likely to be "127.0.0.1/eBayCrawlerPhpAdmin".
+
+[DATABASE STRUCTURE]
+
+    mainconf table is seperated from other table. It's purpose is to control the program.
+    
+                                                          =========================
+                                                         |  goodscategorylevelone  |
+                                                         |=========================|
+                                                         |           PK            |1---
+                                                         |-------------------------|   |
+    ==================                                   |          TITLE          |   |
+   |      sellers     |                                   =========================    |
+   |==================|                                                                |
+   |        PK        |1---                                                            |
+   |------------------|   |                               =========================    |
+   |     USERNAME     |   |                              |  goodscategoryleveltwo  |   |
+   |------------------|   |                              |=========================|   |
+   |      SCORE       |   |                          ---1|           PK            |   |
+   |------------------|   |                          |   |-------------------------|   |
+   |   AVERAGE_PRICE  |   |                          |   |       SUB_HEADING       |∞---
+   |------------------|   |                          |   |-------------------------|
+   |    USED_TIME     |   |                          |   |          TITLE          |      
+    ==================    |                          |    =========================
+                          |    ==================    |
+                          |   |  sellercategory  |   |
+                          |   |==================|   |
+                          |   |        PK        |   |
+                          |   |------------------|   |
+                          ---∞|      SELLER      |   |
+                              |------------------|   |
+                              |   SUB_CATEGORY   |∞---
+                              |------------------|
+                              |     QUANTITY     |
+                               ==================
+                               
+    If you are a web developer and you want to develop a web app based on this program, you can use "Example_eBaySellerData.sql" in "MySQL" folder as testing data.
